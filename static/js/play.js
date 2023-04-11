@@ -18,7 +18,7 @@ guessEl.addEventListener("click", () => {
             resultEl.innerHTML = `You caught a shiny ${capitalizeFirstLetter(pokemon.name)}!`
         }
         guessEl.style.display = "none"
-        fetch(`/catch?name=${pokemon.name}&guess=${guess}`)
+        fetch(`/catch?name=${pokemon.name}&guess=${guess}&is_shiny=${is_shiny}`)
     }
     else {
         fetch(`https://pokeapi.co/api/v2/pokemon/${guess}`)

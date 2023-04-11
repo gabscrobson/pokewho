@@ -125,10 +125,12 @@ def register():
 def catch():
     name = request.args.get("name")
     guess = request.args.get("guess")
+    is_shiny = request.args.get("is_shiny")
     if name is None or guess is None:
         return "missing name or guess"
     if name.lower() == guess.lower():
-        db.execute("UPDATE users SET pokemon_caught = pokemon_caught + 1 WHERE id = ?", session["user_id"])
+        db.execute("UPDATE users SET pokemon_caught = pokemon_caught + ?, cash = cash + ? WHERE id = ?", 1, 100, session["user_id"])
+        db.execute("INSERT INTO pokemon (user_id, name, is_shiny) VALUES (?, ?, ?)", session["user_id"], name, is_shiny)
         return "correct"
 
 # Mystery Image
