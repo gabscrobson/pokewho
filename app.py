@@ -2,9 +2,8 @@ from cs50 import SQL
 from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
-from random import randint
 
-from helpers import login_required, mystery_image
+from helpers import login_required, mystery_image, apology
 
 # Configure application
 app = Flask(__name__)
@@ -53,15 +52,15 @@ def login():
 
         # Ensure username was submitted
         if not username:
-            return "missing username"
+            return apology("missing username")
         # Ensure password was submitted
         elif not password:
-            return "missing password"
+            return apology("missing password")
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", username)
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["password"], password):
-            return "invalid username and/or password"
+            return apology("invalid username and/or password")
         
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
@@ -97,19 +96,19 @@ def register():
         confirmation = request.form.get("confirmation")
         # Ensure username was submitted
         if not username:
-            return "missing username"
+            return apology("missing username")
         # Ensure password was submitted
         elif not password:
-            return "missing password"
+            return apology("missing password")
         # Ensure confirmation was submitted
         elif not confirmation:
-            return "missing confirmation"
+            return apology("missing confirmation")
         # Ensure password and confirmation match
         elif password != confirmation:
-            return "passwords do not match"
+            return apology("passwords do not match")
         # Ensure username is not already taken
         elif db.execute("SELECT * FROM users WHERE username = ?", username):
-            return "username already taken"
+            return apology("username already taken")
         # Insert user into database
         db.execute("INSERT INTO users (username, password) VALUES (?, ?)", username, generate_password_hash(password))
 

@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block main %}
+    <script>
+        document.querySelector('main').style.justifyContent = "center";
+    </script>
+    <!-- https://memegen.link/ -->
+    <img id="apology" alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://wallpaperaccess.com/full/1107720.jpg&width=400" title="{{ top }}">
+{% endblock %}
