@@ -1,0 +1,262 @@
+:root {
+    font-size: 16px;
+    --transition-speed: 600ms;
+    --text-primary: #000000;
+    --text-secondary: #ebedef;
+    --bg-primary: #ebedef;
+    --bg-primary-2: #fefefe;
+    --bg-primary-3: #cecece;
+    --bg-secondary: #671E1E;
+    --bg-secondary-2: #942f2f;
+    --bg-terciary: #4a1313;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: var(--bg-primary-3);
+}
+
+.btn-primary {
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--text-secondary);
+    --bs-btn-bg: var(--bg-secondary);
+    --bs-btn-border-color: none;
+    --bs-btn-hover-color: var(--text-secondary);
+    --bs-btn-hover-bg: var(--bg-secondary-2);
+    --bs-btn-hover-border-color: none;
+    --bs-btn-focus-shadow-rgb: none;
+    --bs-btn-active-color: var(--text-secondary);
+    --bs-btn-active-bg: var(--bg-secondary-2);
+    --bs-btn-active-border-color: none;
+}
+
+.btn-outline-primary {
+    border: 1.5px solid;
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bg-secondary);
+    --bs-btn-bg:var(--bg-primary-2);
+    --bs-btn-border-color: var(--bg-secondary);
+    --bs-btn-hover-color: var(--bg-secondary-2);
+    --bs-btn-hover-bg: var(--bg-primary-2);
+    --bs-btn-hover-border-color: var(--bg-secondary-2);
+    --bs-btn-focus-shadow-rgb: none;
+    --bs-btn-active-color: var(--bg-secondary-2);
+    --bs-btn-active-bg: var(--bg-primary-2);
+    --bs-btn-active-border-color: var(--bg-secondary-2);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'montserrat', sans-serif;
+    min-height: 100vh;
+}
+
+main {
+    background-color: var(--bg-primary);
+    margin-left: 5rem;
+    padding: 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ======= Navbar ======= */
+.mynavbar {
+    position: fixed;
+    background-color: var(--bg-secondary);
+    transition: 200ms ease;
+}
+
+.mynavbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-item:last-child {
+    margin-top: auto;
+}
+
+.mynav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    filter: brightness(85%);
+    transition: var(--transition-speed);
+}
+
+.mynav-link:hover {
+    filter: brightness(100%);
+    background-color: var(--bg-terciary);
+}
+
+.mylink-text {
+    display: none;
+    margin-left: 1rem;
+}
+
+.mynav-link svg{
+    min-width: 2rem;
+    margin: 0 1.5rem;
+    fill: white;
+}
+
+.mylogo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+    letter-spacing: 0.3ch;
+    width: 100%;
+    background-color: var(--bg-terciary);
+    display: flex;;
+    justify-content: center;
+}
+
+.mylogo svg {
+    transform: rotate(0deg);
+    transition: transform var(--transition-speed)
+}
+
+.mynavbar:hover .mylogo svg{
+    transform: rotate(-360deg);
+}
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+    .mynavbar {
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
+    }
+
+    .mylogo {
+        display: none;
+    }
+
+    .mynavbar-nav {
+        flex-direction: row;
+    }
+
+    .mynav-link {
+        justify-content: center;
+    }
+
+    main {
+        margin: 0;
+    }
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+    .mynavbar {
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+    }
+
+    .mynavbar:hover {
+        width: 16rem;
+    }
+    
+    .mynavbar:hover .mylink-text {
+        display: block;
+    }
+
+}
+
+/* ======= Login ======= */
+.login {
+    background-color: var(--bg-primary-2);
+    width: 95%;
+    max-width: 500px;
+    height: 380px;
+    border: 1px solid var(--bg-primary-3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.login h1{
+    font-weight: bolder;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 80%;
+    max-width: 300px;
+}
+
+.login form input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.login button {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+}
+
+/* ======= Play ======= */
+.guessDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+    height: 600px;
+}
+#pokemonImg {
+    aspect-ratio: 1/1;
+    width: 100%;
+    max-height: 475px;
+    border: 1px solid var(--bg-primary-3);
+}
+#guessInput {
+    width: 80%;
+}
+
+#guesses {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 90%;
+    max-width: 500px;
+}
+
+#guess {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#guess img {
+    width: 120px;
+}

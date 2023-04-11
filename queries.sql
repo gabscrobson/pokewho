@@ -1,0 +1,19 @@
+-- SQLITE3
+
+-- CREATE TABLE users (
+--     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+--     username TEXT NOT NULL UNIQUE,
+--     password TEXT NOT NULL,
+--     cash FLOAT NOT NULL DEFAULT 1000,
+--     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     pokemon_caught INTEGER NOT NULL DEFAULT 0
+-- );
+
+-- CREATE TABLE pokemon (
+--     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+--     user_id INTEGER NOT NULL,
+--     name TEXT NOT NULL,
+--     is_shiny INTEGER NOT NULL DEFAULT 0,
+--     caught_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (user_id) REFERENCES users(id)
+-- )

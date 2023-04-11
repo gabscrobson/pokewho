@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %} - Play{% endblock %}
+
+{% block main %}
+    <div class="guessDiv">
+        <img id="pokemonImg" src="/mystery">
+        <h4 id="result">Guess the pokémon name to catch it</h4>
+        <input type="text" autocomplete="off" spellcheck="false" autofocus id="guessInput" class="form-control" id="guess" name="guess" placeholder="Who's that pokemon?">
+        <div id="buttons">
+            <button class="btn btn-primary" id="guessBtn" type="submit">Guess</button>
+            <button class="btn btn-secondary" id="skipBtn" type="submit">Skip</button>
+        </div>
+    </div>
+    <div id="guesses"></div>
+    <script src="/static/js/play.js"></script>  
+{% endblock %}

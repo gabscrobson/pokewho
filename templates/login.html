@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %} - Login{% endblock %}
+
+{% block main %}
+    <div class="login">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <input autocomplete="off" spellcheck="false" autofocus class="form-control" id="username" name="username" placeholder="Username" type="text">
+            <input class="form-control" id="password" name="password" placeholder="Password" type="password">
+            <button class="btn btn-primary" type="submit">Login</button>
+            <button class="btn btn-outline-primary" type="button" onclick="location.href='/register'">Register</button>
+        </form>
+    </div>
+    <script src="static/js/login.js"></script>
+{% endblock %}
