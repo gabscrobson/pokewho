@@ -6,16 +6,23 @@ var resultEl = document.querySelector("#result")
 var guessesEl = document.querySelector("#guesses")
 var pokemon, is_shiny
 
+// Enter key to submit guess
+guessInputEl.addEventListener("keydown", (event) => {
+    if (event.keyCode == 13) {
+        guessEl.click()
+    }
+})
+
 guessEl.addEventListener("click", () => {
     let guess = guessInputEl.value;
     if (guess.toLowerCase() == pokemon.name) {
         if (!is_shiny) {
             pokemonEl.src = pokemon.sprites.other["official-artwork"].front_default
-            resultEl.innerHTML = `You caught a ${capitalizeFirstLetter(pokemon.name)}!`
+            resultEl.innerHTML = `You caught a ${capitalizeFirstLetter(pokemon.name)}! +100 cash`
         }
         else {
             pokemonEl.src = pokemon.sprites.other["official-artwork"].front_shiny
-            resultEl.innerHTML = `You caught a shiny ${capitalizeFirstLetter(pokemon.name)}!`
+            resultEl.innerHTML = `You caught a shiny ${capitalizeFirstLetter(pokemon.name)}! +100 cash`
         }
         guessEl.style.display = "none"
         fetch(`/catch?name=${pokemon.name}&guess=${guess}&is_shiny=${is_shiny}`)
