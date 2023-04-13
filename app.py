@@ -131,6 +131,7 @@ def catch():
         db.execute("UPDATE users SET pokemon_caught = pokemon_caught + ?, cash = cash + ? WHERE id = ?", 1, 100, session["user_id"])
         db.execute("INSERT INTO pokemon (user_id, name, is_shiny) VALUES (?, ?, ?)", session["user_id"], name, is_shiny)
         return "correct"
+    return "incorrect"
 
 # Mystery Image
 @app.route("/mystery")
@@ -139,3 +140,14 @@ def mystery():
     if name is None:
         return "missing name"
     return mystery_image(name)
+
+# Profile
+@app.route("/profile/<username>")
+@login_required
+def profile(username):
+    user = db.execute("SELECT * FROM users WHERE username = ?", username)
+    if len(user) != 1:
+        return apology("user not found")
+    user = user[0]
+    pokemon = db.execute("SELECT * FROM pokemon WHERE user_id = ?", user["id"])
+    return render_template("profile.html", user=user, pokemon=pokemon)

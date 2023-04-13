@@ -267,3 +267,34 @@ main {
 #guess img {
     width: 120px;
 }
+
+/* ======= Profile ======= */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.pokemonBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.pokemon {
+    border: 1px solid var(--bg-primary-3);
+    border-radius: 3px;
+    width: 110px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemon:hover {
+    border: 1px solid black;
+}

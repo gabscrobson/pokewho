@@ -13,6 +13,7 @@ guessInputEl.addEventListener("keydown", (event) => {
     }
 })
 
+// Guess button click
 guessEl.addEventListener("click", () => {
     let guess = guessInputEl.value;
     if (guess.toLowerCase() == pokemon.name) {
@@ -40,6 +41,7 @@ guessEl.addEventListener("click", () => {
     }
 })
 
+// Skip button click
 skipBtn.addEventListener("click", () => {
     generatePokemon()
     guessEl.style.display = "inline-block"
@@ -49,8 +51,9 @@ skipBtn.addEventListener("click", () => {
     guessesEl.innerHTML = ""
 })
 
+// Generate a random pokemon
 function generatePokemon() {
-    is_shiny = Math.random() < 0.5
+    is_shiny = Number(Math.random() < 0.5)  // 0 if false, 1 if true
     fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 1010) + 1}`)
         .then(response => response.json())
         .then(data => {
@@ -59,6 +62,7 @@ function generatePokemon() {
         })
 }
 
+// Capitalize first letter of string
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %} - {{user["username"]}}{% endblock %}
+
+{% block head %}
+    <script type="text/javascript">
+        var pokemon = {{pokemon|tojson|safe}};
+    </script>
+{% endblock %}
+
+{% block main %}
+
+    <div class="profile">
+        <h1>{{user["username"]}}</h1>
+        <p>Cash: {{user["cash"]}}</p>
+        <p>Pokemon caught: {{user["pokemon_caught"]}}</p>
+        <p>Started at: {{user["created_at"]}}</p>
+    </div>
+    <h2>Pokemon box</h2>
+    <div class="pokemonBox"></div>
+    
+    <script src="/static/js/profile.js"></script>
+{% endblock %}

@@ -1,6 +1,8 @@
 const usernameEl = document.querySelector('#username');
 const passwordEl = document.querySelector('#password');
 const confirmEl = document.querySelector('#confirmation');
+
+// Justify content to center
 document.querySelector('main').style.justifyContent = "center";
 
 usernameEl.addEventListener('input', () => {
