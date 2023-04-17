@@ -1,6 +1,6 @@
-name: sample-flask
+name: pokewho
 services:
 - name: web
   github:
-    repo: digitalocean/sample-flask
+    repo: gabscrobson/pokewho
     branch: main
