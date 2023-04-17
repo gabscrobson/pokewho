@@ -287,6 +287,7 @@ main {
 }
 
 .pokemon {
+    position: relative;
     border: 1px solid var(--bg-primary-3);
     border-radius: 3px;
     width: 110px;
@@ -296,5 +297,35 @@ main {
 }
 
 .pokemon:hover {
-    border: 1px solid black;
+    border: 1px solid rgb(41, 41, 41);
+}
+
+.pokemon:hover #favoriteHeart{
+    display: block;
+}
+
+#shinyStar {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+#favoriteHeart {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+#favoriteHeart:hover {
+    color: #de2b2b;
+}
+
+#favoritedHeart {
+    color: #de2b2b;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
 }

@@ -5,6 +5,8 @@
 {% block head %}
     <script type="text/javascript">
         var pokemon = {{ pokemon|tojson }};
+        var user = {{ user|tojson }};
+        var session = {{ session|tojson }};
     </script>
 {% endblock %}
 

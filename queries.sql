@@ -13,9 +13,8 @@
 --     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 --     user_id INTEGER NOT NULL,
 --     name TEXT NOT NULL,
+--     is_favorite INTEGER NOT NULL DEFAULT 0,
 --     is_shiny INTEGER NOT NULL DEFAULT 0,
 --     caught_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 --     FOREIGN KEY (user_id) REFERENCES users(id)
--- )
-
-SELECT * FROM pokemon
+-- );

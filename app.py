@@ -149,5 +149,28 @@ def profile(username):
     if len(user) != 1:
         return apology("user not found")
     user = user[0]
-    pokemon = db.execute("SELECT * FROM pokemon WHERE user_id = ?", user["id"])
+
+    # Get user's pokemon ordered by favorite first and then by most recently caught
+    pokemon = db.execute("SELECT * FROM pokemon WHERE user_id = ? ORDER BY is_favorite DESC, caught_at DESC;", user["id"])
+
     return render_template("profile.html", user=user, pokemon=pokemon)
+
+# Favorite Pokemon
+@app.route("/favorite", methods=["POST"])
+def favorite():
+    pokemon_id = request.get_json()["id"]
+
+    # Ensure pokemon belongs to user
+    pokemon_owner = db.execute("SELECT user_id FROM pokemon WHERE id = ?", pokemon_id)[0]
+
+    if pokemon_owner["user_id"] != session["user_id"]:
+        return "not your pokemon"
+
+    # Ensure pokemon exists
+    if pokemon_id is None:
+        return "missing id"
+    
+    # Toggle is_favorite
+    db.execute("UPDATE pokemon SET is_favorite = NOT is_favorite WHERE id = ?", pokemon_id)
+
+    return "success"
