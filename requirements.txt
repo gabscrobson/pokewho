@@ -8,3 +8,4 @@ Werkzeug==1.0.1
 cs50==7.0.0
 Flask-Session
 requests
+Pillow
