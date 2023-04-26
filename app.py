@@ -1,5 +1,5 @@
 from cs50 import SQL
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, jsonify, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -33,10 +33,10 @@ def after_request(response):
 def index():
     return render_template("index.html")
 
+# Play
 @app.route("/play")
 @login_required
 def play():
-    
     return render_template("play.html")
 
 # Login
@@ -174,3 +174,30 @@ def favorite():
     db.execute("UPDATE pokemon SET is_favorite = NOT is_favorite WHERE id = ?", pokemon_id)
 
     return "success"
+
+# Market
+@app.route("/market")
+@login_required
+def market():
+    # Get all pokemon
+    pokemon_at_sale = db.execute("SELECT * FROM pokemon WHERE user_id != ? AND is_at_sale = 1", session["user_id"])
+
+
+    return render_template("market.html", pokemon_at_sale=pokemon_at_sale)
+
+# Preferences
+@app.route("/preferences", methods=["GET"])
+@login_required
+def preferences():
+    theme = request.args.get("theme")
+
+    if theme is not None:
+        session["theme"] = theme
+
+    return 'success'
+
+# Session
+@app.route("/session", methods=["GET"])
+@login_required
+def getSession():
+    return jsonify(session)

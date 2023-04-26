@@ -22,7 +22,7 @@ for (let p of pokemon) {
 // Add event listener to pokemonBox for click events
 pokemonBox.addEventListener("click", (e) => {
     // If the click is on a favorite heart
-    if (e.target && e.target.matches("#favoriteHeart")) {
+    if (e.target && e.target.matches("#favoriteHeart") && is_owner) {
         let element = e.target
         let id = +(element.parentElement.querySelector(".pokemonId").innerText)
 
@@ -44,7 +44,7 @@ pokemonBox.addEventListener("click", (e) => {
           });
     }
     // If the click is on a favorited heart
-    else if (e.target && e.target.matches("#favoritedHeart")) {
+    else if (e.target && e.target.matches("#favoritedHeart") && is_owner) {
         let element = e.target
         let id = +(element.parentElement.querySelector(".pokemonId").innerText)
 

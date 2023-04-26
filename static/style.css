@@ -54,6 +54,7 @@
 body {
     font-family: 'montserrat', sans-serif;
     min-height: 100vh;
+    color: var(--text-primary)
 }
 
 main {

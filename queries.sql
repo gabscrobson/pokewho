@@ -15,6 +15,8 @@
 --     name TEXT NOT NULL,
 --     is_favorite INTEGER NOT NULL DEFAULT 0,
 --     is_shiny INTEGER NOT NULL DEFAULT 0,
+--     is_sale INTEGER NOT NULL DEFAULT 0,
+--     price FLOAT,
 --     caught_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 --     FOREIGN KEY (user_id) REFERENCES users(id)
 -- );
