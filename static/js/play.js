@@ -53,13 +53,17 @@ skipBtn.addEventListener("click", () => {
 
 // Generate a random pokemon
 function generatePokemon() {
-    is_shiny = Number(Math.random() < 0.5)  // 0 if false, 1 if true
+    is_shiny = Number(Math.random() < 0.1);  // 0 if false, 1 if true
+    pokemonEl.style.display = "none";  // hide the Pokemon image while loading
+    document.querySelector("#loadingIcon").style.display = "flex";  // show the loading icon
     fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 1010) + 1}`)
         .then(response => response.json())
         .then(data => {
-            pokemon = data
-            pokemonEl.src = `/mystery?name=${pokemon.id}`
-        })
+            pokemon = data;
+            pokemonEl.src = `/mystery?name=${pokemon.id}`;
+            pokemonEl.style.display = "block";  // show the Pokemon image after loading
+            document.querySelector("#loadingIcon").style.display = "none";  // hide the loading icon after loading
+        });
 }
 
 // Capitalize first letter of string
