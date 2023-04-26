@@ -8,6 +8,9 @@ fetch("/session")
         if (session.theme == 'dark') {
             dark();
         }
+        else {
+            light();
+        }
     });
 
 themeEl.addEventListener('click', () => {
