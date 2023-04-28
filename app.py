@@ -157,6 +157,7 @@ def profile(username):
 
 # Favorite Pokemon
 @app.route("/favorite", methods=["POST"])
+@login_required
 def favorite():
     pokemon_id = request.get_json()["id"]
 
@@ -180,7 +181,7 @@ def favorite():
 @login_required
 def market():
     # Get all pokemon
-    pokemon_at_sale = db.execute("SELECT * FROM pokemon WHERE user_id != ? AND is_at_sale = 1", session["user_id"])
+    pokemon_at_sale = db.execute("SELECT * FROM pokemon WHERE is_sale = 1")
 
 
     return render_template("market.html", pokemon_at_sale=pokemon_at_sale)

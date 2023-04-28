@@ -25,6 +25,7 @@ themeEl.addEventListener('click', () => {
 });
 
 function light() {
+    r.style.setProperty('--text-primary', '#0e0e0e');
     r.style.setProperty('--bg-primary', '#ebedef');
     r.style.setProperty('--bg-primary-2', '#fefefe');
     r.style.setProperty('--bg-primary-3', '#cecece');

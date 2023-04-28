@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %} - Market}}{% endblock %}
+
+{% block head %}
+    <script type="text/javascript">
+        var pokemon_at_sale = {{ pokemon_at_sale|tojson }};
+    </script>
+{% endblock %}
+
+{% block main %}
+
+    <h1>hello</h1>
+    
+    <script src="/static/js/market.js"></script>
+{% endblock %}
