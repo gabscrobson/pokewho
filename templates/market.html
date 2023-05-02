@@ -1,16 +1,25 @@
 {% extends "layout.html" %}
 
-{% block title %} - Market}}{% endblock %}
+{% block title %} - Market{% endblock %}
 
 {% block head %}
     <script type="text/javascript">
         var pokemon_at_sale = {{ pokemon_at_sale|tojson }};
+        var user = {{ user|tojson }};
     </script>
 {% endblock %}
 
 {% block main %}
 
-    <h1>hello</h1>
+    <h1>Market</h1>
+    <p>{{ user["username"] }}'s balance: {{ user["cash"] }}</p>
+
+    <div>
+        <h2>Your pokémon</h2>
+    </div>
+    <div>
+        <h2>Your pokemon</h2>
+    </div>
     
     <script src="/static/js/market.js"></script>
 {% endblock %}

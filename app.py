@@ -145,6 +145,7 @@ def mystery():
 @app.route("/profile/<username>")
 @login_required
 def profile(username):
+    # Get user
     user = db.execute("SELECT * FROM users WHERE username = ?", username)
     if len(user) != 1:
         return apology("user not found")
@@ -180,11 +181,15 @@ def favorite():
 @app.route("/market")
 @login_required
 def market():
+    # Get user
+    user = db.execute("SELECT * FROM users WHERE username = ?", session["username"])
+    user = user[0]
+
     # Get all pokemon
     pokemon_at_sale = db.execute("SELECT * FROM pokemon WHERE is_sale = 1")
 
 
-    return render_template("market.html", pokemon_at_sale=pokemon_at_sale)
+    return render_template("market.html", user=user, pokemon_at_sale=pokemon_at_sale)
 
 # Preferences
 @app.route("/preferences", methods=["GET"])
