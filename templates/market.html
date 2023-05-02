@@ -12,13 +12,35 @@
 {% block main %}
 
     <h1>Market</h1>
-    <p>{{ user["username"] }}'s balance: {{ user["cash"] }}</p>
+    <p>{{ user["username"] }}'s balance: ${{ user["cash"] }}</p>
+
+    <h2>Your pokémon</h2>
+    <div id="playerPokemonDiv">
+
+        <!-- TEMPLATE -->
+        <div class="playerPokemon">
+            <div class="pokemon">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png">
+            </div>
+            <div class="pokemonId" style="display: none">ID</div>
+            <b>Ditto</b>
+            <b>Price: $100</b>
+        </div>
+
+        <div class="playerPokemon">
+            <div class="pokemon">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png">
+            </div>
+            <div class="pokemonId" style="display: none">ID</div>
+            <b>Ditto</b>
+            <b>Price: $100</b>
+        </div>
+        <!-- END TEMPLATE -->
+
+    </div>
 
     <div>
-        <h2>Your pokémon</h2>
-    </div>
-    <div>
-        <h2>Your pokemon</h2>
+        <h2>Pokemon for sale</h2>
     </div>
     
     <script src="/static/js/market.js"></script>

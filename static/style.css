@@ -350,3 +350,18 @@ main {
     right: 5px;
     cursor: pointer;
 }
+
+/* ======= Market ======= */
+#playerPokemonDiv {
+    width: 90%;
+    max-width: 600px;
+}
+
+.playerPokemon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 3px solid var(--bg-primary-3);
+    padding: 8px;
+}
