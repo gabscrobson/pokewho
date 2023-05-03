@@ -40,7 +40,8 @@ pokemonBox.addEventListener("click", (e) => {
               'Content-Type': 'application/json'
             }
           }).then((response) => {
-            console.log(response.status)
+            console.log(response.status);
+            location.reload();
           });
     }
     // If the click is on a favorited heart
@@ -62,7 +63,8 @@ pokemonBox.addEventListener("click", (e) => {
               'Content-Type': 'application/json'
             }
           }).then((response) => {
-            console.log(response.status)
+            console.log(response.status);
+            location.reload();
           });
     }
 });

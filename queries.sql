@@ -20,3 +20,7 @@
 --     caught_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 --     FOREIGN KEY (user_id) REFERENCES users(id)
 -- );
+
+UPDATE pokemon
+SET price = 10000, is_sale = 1
+WHERE user_id = 1;

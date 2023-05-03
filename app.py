@@ -178,18 +178,67 @@ def favorite():
     return "success"
 
 # Market
-@app.route("/market")
+@app.route("/market", methods=["GET", "POST"])
 @login_required
 def market():
-    # Get user
-    user = db.execute("SELECT * FROM users WHERE username = ?", session["username"])
-    user = user[0]
+    # POST
+    if request.method == "POST":
+        pokemon_id = request.get_json()["id"]
+        pokemon_method = request.get_json()["method"]
 
-    # Get all pokemon
-    pokemon_at_sale = db.execute("SELECT * FROM pokemon WHERE is_sale = 1")
+        # Ensure pokemon exists
+        if pokemon_id is None:
+            return "missing id"
+
+        print(pokemon_id)
+        print(pokemon_method)
+
+        # get_back
+        if pokemon_method == "get_back":
+            # Ensure pokemon belongs to user
+            pokemon_owner = db.execute("SELECT user_id FROM pokemon WHERE id = ?", pokemon_id)[0]
+            if pokemon_owner["user_id"] != session["user_id"]:
+                return "not your pokemon"
+
+            # Update pokemon
+            db.execute("UPDATE pokemon SET is_sale = 0, price = NULL WHERE id = ?", pokemon_id)
+            return "sucess"
+        
+        # buy
+        elif pokemon_method == "buy":
+            # Get pokemon
+            pokemon = db.execute("SELECT * FROM pokemon WHERE id = ?", pokemon_id)[0]
+
+            # Ensure pokemon is for sale
+            if pokemon["is_sale"] == 0:
+                return "not for sale", 400
+
+            # Ensure user has enough cash
+            user = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])[0]
+            if user["cash"] < pokemon["price"]:
+                return "not enough cash", 401
+
+            # Update user
+            db.execute("UPDATE users SET cash = cash - ? WHERE id = ?", pokemon["price"], session["user_id"])
+
+            # Update pokemon
+            db.execute("UPDATE pokemon SET is_sale = 0, price = NULL, user_id = ? WHERE id = ?", session["user_id"], pokemon_id)
+
+            return "success"
 
 
-    return render_template("market.html", user=user, pokemon_at_sale=pokemon_at_sale)
+        return "error"
+    
+    # GET
+    else:
+        # Get user
+        user = db.execute("SELECT * FROM users WHERE username = ?", session["username"])
+        user = user[0]
+
+        # Get all pokemon
+        pokemon_at_sale = db.execute("SELECT * FROM pokemon WHERE is_sale = 1")
+
+        return render_template("market.html", user=user, pokemon_at_sale=pokemon_at_sale)
 
 # Preferences
 @app.route("/preferences", methods=["GET"])
