@@ -51,9 +51,14 @@
     box-sizing: border-box;
 }
 
+html {
+    height: -webkit-fill-available;
+}
+
 body {
     font-family: 'montserrat', sans-serif;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     color: var(--text-primary)
 }
 
@@ -165,6 +170,7 @@ main {
     }
 
     main {
+        min-height: calc(100vh - 5rem);
         margin: 0;
         margin-bottom: 5rem;
     }
@@ -238,7 +244,6 @@ main {
     align-items: center;
     width: 90%;
     max-width: 500px;
-    height: 600px;
 }
 #pokemonImg, #loadingIcon {
     aspect-ratio: 1/1;
@@ -287,6 +292,10 @@ main {
 
 #guess img {
     width: 120px;
+}
+
+#buttons {
+    margin-top: 7px;
 }
 
 /* ======= Profile ======= */
