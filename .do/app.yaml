@@ -1,6 +1,0 @@
-name: pokewho
-services:
-- name: web
-  github:
-    repo: gabscrobson/pokewho
-    branch: main

@@ -1,7 +1,0 @@
-spec:
-  name: pokewho
-  services:
-  - name: web
-    git:
-      branch: main
-      repo_clone_url: https://github.com/gabscrobson/pokewho.git
