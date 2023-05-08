@@ -375,3 +375,10 @@ main {
     border: 3px solid var(--bg-primary-3);
     padding: 8px;
 }
+
+.index {
+    text-align: center;
+    font-size: 1.2em;
+    width: 90%;
+    max-width: 600px;
+}
