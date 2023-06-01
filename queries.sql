@@ -25,7 +25,7 @@
 -- SET price = 10000, is_sale = 1
 -- WHERE user_id = 1;
 
-INSERT INTO pokemon (user_id, name, is_shiny, is_sale, price) VALUES (1, "Dialga", 0, 1, 300);
-INSERT INTO pokemon (user_id, name, is_shiny, is_sale, price) VALUES (1, "Palkia", 0, 1, 330);
-INSERT INTO pokemon (user_id, name, is_shiny, is_sale, price) VALUES (1, "Kyogre", 1, 1, 500);
-INSERT INTO pokemon (user_id, name, is_shiny, is_sale, price) VALUES (1, "Pikachu", 0, 1, 100);
+INSERT INTO pokemon (user_id, name, is_shiny, is_sale, price) VALUES (1, "dialga", 0, 1, 300);
+INSERT INTO pokemon (user_id, name, is_shiny, is_sale, price) VALUES (1, "palkia", 0, 1, 330);
+INSERT INTO pokemon (user_id, name, is_shiny, is_sale, price) VALUES (1, "kyogre", 1, 1, 500);
+INSERT INTO pokemon (user_id, name, is_shiny, is_sale, price) VALUES (1, "pikachu", 0, 1, 100);
