@@ -255,4 +255,5 @@ def preferences():
 @app.route("/session", methods=["GET"])
 @login_required
 def getSession():
-    return jsonify(session)
+    session_dict = dict(session)
+    return jsonify(session_dict)
